@@ -1,0 +1,28 @@
+{
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "lowdb": "^1.0.0",
+    "react-bootstrap": "^1.0.0-beta.12",
+    "socket.io": "^2.2.0"
+  },
+  "name": "project_libra",
+  "description": "Space Apps 2019 Entry",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quadroloop/Libra.git"
+  },
+  "author": "Bryce Mercines",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quadroloop/Libra/issues"
+  },
+  "homepage": "https://github.com/quadroloop/Libra#readme"
+}
