@@ -286,10 +286,14 @@ a{
     width: 150px;
     height: 150px;
     border-radius: 100%;
+
+    transition: all 250ms $easing;
   }
 
   * > .CircularProgressbar-text {
     font-weight: 700;
+    font-size: 1.75rem;
+    letter-spacing: -1px;
   }
 }
 
