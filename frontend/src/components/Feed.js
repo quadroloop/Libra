@@ -21,16 +21,16 @@ class Feed extends React.Component {
 
   render() {
     const { feed } = this.state
-        window.onload = ()=>{
+    window.onload = ()=>{
         loadLiveFeed();
     }
 
-  return (
-    <div id="feed">
-      <div className="side-bar">
-        <p><i className="fa fa-bullseye text-danger"></i> Latest Global Hazard Events</p>
-        <hr />
-        <div id="live-feed">
+    return (
+      <div id="feed">
+        <div className="side-bar">
+          <p><i className="fa fa-bullseye text-danger"></i> Latest Global Hazard Events</p>
+          <hr />
+          <div id="live-feed">
             <div class="post">
             <div class="avatar"></div>
             </div>
@@ -64,8 +64,9 @@ class Feed extends React.Component {
             <div class="post">
             <div class="avatar"></div>
             </div>
+          </div>
         </div>
-      </div>
+        
         <div className="feed-content">
 
           <div className="feed-header">

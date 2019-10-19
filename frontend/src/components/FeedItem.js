@@ -20,14 +20,13 @@ function FeedItem(props) {
   const { feedItem } = props
 
   return (
-    <Link to={`/location/${feedItem.id}`} className="feed-link"
+    <Link to={`/location/${feedItem.city_name}`} className="feed-link"
       onClick={() => { renderMap() }}
-
     >
       <div className="feed-item">
         <div className="feed-details">
           <h1 className="city-name">
-            {feedItem.country_name}
+            {feedItem.city_name}
           </h1>
           <h3 className="danger-index">
             Danger Index <span className="index-number">3.2</span>

@@ -9,6 +9,7 @@ import LocationImage from '../assets/location.jpg'
 import { el } from './vanilla';
 import RelatedHazards from './RelatedHazards';
 
+import client from '../services/client'
 
 const renderMap = (lat, long) => {
   localStorage.lat = lat;
@@ -17,16 +18,14 @@ const renderMap = (lat, long) => {
   el('render-map').click();
 }
 
-window.onload = () => {
-  renderMap();
-}
+// window.onload = () => {
+//   renderMap();
+// }
 
 function Location(props) {
   const { match } = props
-
-  const [dangerIndex, setDangerIndex] = useState(3.2)
-
-  window.setDangerIndex = setDangerIndex
+  const [locationData, setLocationData] = useState({})
+  const [dangerIndex, setDangerIndex] = useState(0)
 
   const getPathColor = dangerIndex => {
     const colors = {
@@ -51,11 +50,25 @@ function Location(props) {
     return color
   }
 
+  useEffect(() => {
+    client.get('/location', {
+      params: {
+        location: match.params.location
+      }
+    })
+      .then(response => {
+        setLocationData(response.data)
+        setDangerIndex(response.data.danger_index)
+        renderMap(response.data.lat, response.data.long)
+      })
+      .catch(error => { })
+  }, [])
+
   return (
     <div className="location-container">
       <div className="location-sidebar">
         <img src={LocationImage} alt="" className="location-image" />
-        <h3 className="location-name">Quezon City</h3>
+        <h3 className="location-name">{locationData.city_name}</h3>
         <p className="country-name">PHILIPPINES</p>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, repudiandae!
@@ -118,7 +131,7 @@ function Location(props) {
           </h3>
 
           <RelatedHazards
-            data={Array.from(Array(5))}
+            data={locationData.history}
           />
         </div>
       </div>

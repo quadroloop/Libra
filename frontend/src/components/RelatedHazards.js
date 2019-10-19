@@ -6,13 +6,13 @@ import NoahLogo from '../assets/noah-logo.png'
 import LocationImage from '../assets/location.jpg'
 
 function RelatedHazards(props) {
-  const { data } = props
+  const { data = [] } = props
 
   return (
     <div className="related-hazards">
       {
-        data.map(item => (
-          <div className="hazard-item">
+        data.map((item, index) => (
+          <div key={index} className="hazard-item">
             <div className="d-flex align-items-center">
               <div
                 className="hazard-item-image"
@@ -22,7 +22,7 @@ function RelatedHazards(props) {
                 }}
               />
               <h3 className="hazard-item-text">
-                Sample City Name
+                { item.location }
               </h3>
             </div>
             <h3 className="hazard-item-text">
@@ -33,8 +33,16 @@ function RelatedHazards(props) {
             </h3>
 
             <div className="sources-images" style={{ margin: 0 }}>
-              <img className="sources-logo" src={NasaLogo} alt=""/>
-              <img className="sources-logo" src={NoahLogo} alt=""/>
+              {
+                item.source.includes('nasa') && (
+                  <img className="sources-logo" src={NasaLogo} alt="" />
+                )
+              }
+              {
+                item.source.includes('noah') && (
+                  <img className="sources-logo" src={NoahLogo} alt="" />
+                )
+              }
             </div>
 
             <Button variant="outline-info" className="hazard-item-button">
