@@ -55,7 +55,8 @@ function Location(props) {
     <div className="location-container">
       <div className="location-sidebar">
         <img src={LocationImage} alt="" className="location-image" />
-        <h1 className="location-name">Location</h1>
+        <h3 className="location-name">Quezon City</h3>
+        <p className="country-name">PHILIPPINES</p>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, repudiandae!
         </p>

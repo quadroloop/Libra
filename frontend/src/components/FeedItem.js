@@ -13,7 +13,7 @@ const renderMap = (lat, long) => {
 
   setTimeout(dl => {
     el('render-map').click();
-  }, 600);
+  }, 300);
 }
 
 function FeedItem(props) {
