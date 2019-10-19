@@ -66,10 +66,12 @@ class Feed extends React.Component {
             </div>
           </div>
         </div>
-        
+
         <div className="feed-content">
 
-          <div className="feed-header">
+          <div className="feed-header p-5">
+            <h1 className="text-white"> <span>Project</span> | Libra </h1>
+            <p className="text-white">A global hazard assesment tool that everyone can <strong>understand.</strong></p>
           </div>
           <div className="feed-container">
 
