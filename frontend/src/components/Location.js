@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 
 import RadialSeparators from '../services/RadialSeparators'
+import LocationImage from '../assets/location.jpg'
 
 function Location(props) {
   const { match } = props
@@ -41,7 +42,7 @@ function Location(props) {
   return (
     <div className="location-container">
       <div className="location-sidebar">
-        <img src="https://picsum.photos/300/300" alt="" className="location-image" />
+        <img src={LocationImage} alt="" className="location-image" />
         <h1 className="location-name">Location</h1>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, repudiandae!

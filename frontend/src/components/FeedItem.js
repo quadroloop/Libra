@@ -1,7 +1,9 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 import NasaLogo from '../assets/nasa-logo.png'
 import NoahLogo from '../assets/noah-logo.png'
-import { Link } from 'react-router-dom'
+import LocationImage from '../assets/location.jpg'
 
 function FeedItem(props) {
   const { feedItem } = props
@@ -29,7 +31,7 @@ function FeedItem(props) {
             }
           </div>
         </div>
-        <img className="feed-image" src="https://picsum.photos/300/300" alt=""/>
+        <img className="feed-image" src={LocationImage} alt=""/>
       </div>
     </Link>
     
