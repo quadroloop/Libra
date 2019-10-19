@@ -11,6 +11,11 @@ $easing: cubic-bezier(0.4, 0.0, 0.2, 1);
   margin-left: 20px;
 }
 
+a{
+  text-decoration: none !important;
+  color: #fff;
+}
+
 #search-bar{
   width: 400px;
   margin-left: 50px;
@@ -54,7 +59,7 @@ $easing: cubic-bezier(0.4, 0.0, 0.2, 1);
   height: calc(100vh - 64px);
   background-color: #5491CA;
   padding: 40px 20px;
-  min-width: 340px;
+  max-width: 340px;
   color: #ffffff;
   overflow-y: scroll;
   z-index: 999;
@@ -94,11 +99,45 @@ $easing: cubic-bezier(0.4, 0.0, 0.2, 1);
 
 .new-feed-card{
   border-radius: 4px;
-  padding: 10px;
+  padding: 15px;
   height: 150px;
   background: rgb(103, 172, 236);
   margin-bottom: 15px;
-  box-shadow: -3px 6px 24px -9px rgba(5, 10, 32, 0.75);
+  transition: 0.3s;
+
+
+  span{
+    font-size: 18px;
+  }
+
+  .hazard-type{
+    text-transform: uppercase;
+    color: #fff;
+    padding: 3px;
+    border-radius: 4px;
+    position: absolute;
+    margin-left: -120px;
+    margin-top: 30px;
+  }
+
+  &:hover{
+    cursor: pointer;
+    box-shadow: -3px 6px 24px -9px rgba(5, 10, 32, 0.75);
+    background: rgba(59, 161, 245, 0.952);
+    .btn-circle{
+      background: rgba(155, 201, 245,0.5);
+      transition: 0.3s;
+    }
+  }
+
+  .btn-circle{
+    float: right;
+    margin-right: 2px;
+    padding: 6px 10px;
+    border-radius: 100%;
+    border: 1px solid #fff;
+    transition: 0.3s;
+  }
 }
 
 // home
@@ -131,7 +170,7 @@ $easing: cubic-bezier(0.4, 0.0, 0.2, 1);
   min-width: 480px;
   margin: 0 16px;
   margin-bottom: 16px;
-  
+
   cursor: pointer;
 
   &:hover {
@@ -245,4 +284,43 @@ $easing: cubic-bezier(0.4, 0.0, 0.2, 1);
   text-transform: uppercase;
   margin-bottom: 2rem;
   font-weight: 800;
+}
+
+// skeleton loader
+
+
+.post {
+  width: 320px;
+  height: 150px;
+  opacity: 0.3 !important;
+}
+.post .avatar {
+  float: left;
+  width: 90%;
+  height: 150px;
+  background-color: rgba(229, 229, 229, 0.2);
+  border-radius: 5px;
+  margin: 8px;
+  background-image: linear-gradient(90deg, #F4F4F4 0px, rgba(229, 229, 229, 0.1) 40px, rgba(255, 255, 255, 0.287) 80px);
+  background-size: 1200px;
+  animation: shine-avatar 2s infinite ease-out;
+}
+
+
+
+@keyframes shine-lines {
+  0% {
+    background-position: -100px;
+  }
+  40%, 100% {
+    background-position: 140px;
+  }
+}
+@keyframes shine-avatar {
+  0% {
+    background-position: -32px;
+  }
+  40%, 100% {
+    background-position: 508px;
+  }
 }

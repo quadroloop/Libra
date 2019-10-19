@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import client from '../services/client'
-
+import {loadLiveFeed} from '../components/LiveFeed';
 import FeedItem from './FeedItem'
 
 class Feed extends React.Component {
@@ -20,53 +20,52 @@ class Feed extends React.Component {
 
   render() {
     const { feed } = this.state
+    window.onload = ()=>{
+    loadLiveFeed();
+    }
 
-    return (
-      <div id="feed">
-        <div className="side-bar">
-          <p><i class="fa fa-bullseye text-danger"></i> Latest Hazard Events</p>
-          <hr />
-          <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div>
-          <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div> <div className="new-feed-card">
-            <span>This is a new feed</span>
-          </div>
-  
+  return (
+    <div id="feed">
+      <div className="side-bar">
+        <p><i className="fa fa-bullseye text-danger"></i> Latest Global Hazard Events</p>
+        <hr />
+        <div id="live-feed">
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
         </div>
-  
+      </div>
+      
         <div className="feed-content">
           <div className="feed-header">
           </div>
