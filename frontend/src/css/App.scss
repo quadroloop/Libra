@@ -225,3 +225,24 @@ $easing: cubic-bezier(0.4, 0.0, 0.2, 1);
 .map {
   flex: 1;
 }
+
+.danger-index-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: #F8F8F8;
+
+  > div {
+    width: 65%;
+    margin: auto;
+  }
+}
+
+.danger-index-title {
+  font-size: 0.875rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  font-weight: 800;
+}
