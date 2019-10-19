@@ -1,10 +1,11 @@
-import React from 'react';
 import axios from 'axios';
 import { el, isMounted } from '../components/vanilla';
 
+let prod = false;
+
 
 export const loadLiveFeed = () => {
-  if (isMounted('live-feed')) {
+  if (isMounted('live-feed') && prod === true) {
     axios.get('https://api.reliefweb.int/v1/disasters?limit=100&profile=list&preset=latest')
       .then(res => {
 
