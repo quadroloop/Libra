@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import client from '../services/client'
-
+import {loadLiveFeed} from '../components/LiveFeed';
 import FeedItem from './FeedItem'
 
 const Feed = () => {
@@ -13,28 +13,50 @@ const Feed = () => {
       })
   })
 
+window.onload = ()=>{
+ loadLiveFeed();
+}
+
   return (
     <div id="feed">
       <div className="side-bar">
-        <p><i class="fa fa-bullseye text-danger"></i> Latest Global Hazard Events</p>
+        <p><i className="fa fa-bullseye text-danger"></i> Latest Global Hazard Events</p>
         <hr />
-
-        <div className="new-feed-card">
-          <span><strong>This is a new feed</strong></span>
-          <br/>
-          <small>2 countries affected</small><br/>
-          <small>OCT - 2018</small><br/>
-              <div className="btn-circle">
-                <i className="fa fa-chevron-right"></i>
-              </div>
-          <div className="mt-3">
-          <small className="badge-warning p-1 px-2"><i className="fa fa-warning"></i> Polio Outbreak</small>
-          </div>
+        <div id="live-feed">
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
+            <div class="post">
+            <div class="avatar"></div>
+            </div>
         </div>
-
-
-
-
       </div>
 
       <div className="feed-content">
