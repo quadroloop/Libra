@@ -7,6 +7,8 @@ import RadialSeparators from '../services/RadialSeparators'
 import AnimatedProgressProvider from '../services/AnimatedProgressProvider'
 import LocationImage from '../assets/location.jpg'
 import { el } from './vanilla';
+import RelatedHazards from './RelatedHazards';
+
 
 const renderMap = (lat, long) => {
   localStorage.lat = lat;
@@ -109,6 +111,14 @@ function Location(props) {
               <h3 className="danger-index-title">Danger Index</h3>
             </div>
           </div>
+
+          <h3 className="related-hazards-title">
+            Related Hazards
+          </h3>
+
+          <RelatedHazards
+            data={Array.from(Array(5))}
+          />
         </div>
       </div>
     </div>
