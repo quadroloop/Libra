@@ -93,11 +93,45 @@
 
 .new-feed-card{
   border-radius: 4px;
-  padding: 10px;
+  padding: 15px;
   height: 150px;
   background: rgb(103, 172, 236);
   margin-bottom: 15px;
-  box-shadow: -3px 6px 24px -9px rgba(5, 10, 32, 0.75);
+  transition: 0.3s;
+
+
+  span{
+    font-size: 18px;
+  }
+
+  .hazard-type{
+    text-transform: uppercase;
+    color: #fff;
+    padding: 3px;
+    border-radius: 4px;
+    position: absolute;
+    margin-left: -120px;
+    margin-top: 30px;
+  }
+
+  &:hover{
+    cursor: pointer;
+    box-shadow: -3px 6px 24px -9px rgba(5, 10, 32, 0.75);
+    background: rgba(59, 161, 245, 0.952);
+    .btn-circle{
+      background: rgba(155, 201, 245,0.5);
+      transition: 0.3s;
+    }
+  }
+
+  .btn-circle{
+    float: right;
+    margin-right: 2px;
+    padding: 6px 10px;
+    border-radius: 100%;
+    border: 1px solid #fff;
+    transition: 0.3s;
+  }
 }
 
 // home
