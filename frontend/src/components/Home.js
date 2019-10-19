@@ -2,11 +2,10 @@ import React from 'react';
 import { Navbar, Nav, InputGroup, Form, FormControl } from 'react-bootstrap';
 import { Route, withRouter } from 'react-router-dom'
 import Feed from './Feed';
+import Location from './Location'
 
 function Home(props) {
   const { match } = props
-
-  console.log(match)
 
   return (
     <div className="app-container">
@@ -45,7 +44,8 @@ function Home(props) {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <Route path={match.path} component={Feed} />
+      <Route exact path="/" component={Feed} />
+      <Route path="/location/:location" component={Location} />
     </div>
   );
 }
