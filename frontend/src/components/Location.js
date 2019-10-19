@@ -6,6 +6,7 @@ import { easeCubicInOut } from 'd3-ease';
 import RadialSeparators from '../services/RadialSeparators'
 import AnimatedProgressProvider from '../services/AnimatedProgressProvider'
 import LocationImage from '../assets/location.jpg'
+import RelatedHazards from './RelatedHazards';
 
 function Location(props) {
   const { match } = props
@@ -97,6 +98,14 @@ function Location(props) {
               <h3 className="danger-index-title">Danger Index</h3>
             </div>
           </div>
+
+          <h3 className="related-hazards-title">
+            Related Hazards
+          </h3>
+          
+          <RelatedHazards
+            data={Array.from(Array(5))}
+          />
         </div>
       </div>
     </div>

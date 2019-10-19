@@ -252,6 +252,8 @@ nav {
 .location-content {
   flex: 1;
   background: #E2E8F2;
+  height: calc(100vh - 64px);
+  overflow: scroll;
 }
 
 .content-container {
@@ -307,6 +309,62 @@ nav {
   text-transform: uppercase;
   margin-bottom: 2rem;
   font-weight: 800;
+}
+
+.related-hazards-title {
+  font-size: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 1rem 0;
+
+  margin-top: 1.5rem;
+}
+
+.related-hazards {
+  display: flex;
+  flex-direction: column;
+}
+
+.hazard-item {
+  background: #ffffff;
+  min-height: 64px;
+  margin-bottom: 16px;
+  border-radius: 5px;
+
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 16px 40px;
+
+  &-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+    background: lightgrey;
+    margin-right: 1.5rem;
+  }
+
+  &-text {
+    font-size: 1.125rem;
+    margin: 0;
+    margin-right: 1.5rem;
+    color: rgba(0, 0, 0, 0.625);
+
+    &-badge {
+      font-size: 0.75rem;
+      background: #FFA400;
+      color: #ffffff;
+      border-radius: 2.5px;
+      padding: 2.5px 5px;
+    }
+  }
+
+  &-button {
+    border-radius: 50px;
+  }
 }
 
 // skeleton loader
