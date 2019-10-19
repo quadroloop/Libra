@@ -27,8 +27,9 @@ function Home() {
 
           <Nav className="ml-auto mr-5">
 
-            <Nav.Link href="#home">About</Nav.Link>
-            <Nav.Link href="#link">Community</Nav.Link>
+            <Nav.Link className="active">Home</Nav.Link>
+            <Nav.Link>About</Nav.Link>
+            <Nav.Link>Community</Nav.Link>
 
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

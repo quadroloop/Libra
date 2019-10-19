@@ -11,13 +11,31 @@
 }
 
 #search-btn{
-  width: 50px;
+  width: 60px;
   background-color: #5491CA;
   border: 0px;
   border-radius: 0px 4px 4px 0px;
 
   i{
-    margin-left: 4px;
+    margin-left: 10px;
     color: #fff;
   }
+}
+
+.nav-link{
+  margin-right: 40px !important;
+  transition: 0.3s;
+  border-bottom: 3px solid transparent;
+
+
+  &:hover{
+    color: rgba(81, 153, 236, 0.842) !important;
+  }
+
+}
+
+.nav-link.active{
+    color: #5491CA !important;
+    font-weight: 500 !important;
+    border-bottom: 3px solid #5491CA;
 }
