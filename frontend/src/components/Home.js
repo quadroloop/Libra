@@ -1,16 +1,21 @@
 import React from 'react';
 import { Navbar, Nav, InputGroup, Form, FormControl } from 'react-bootstrap';
+import { Route, withRouter } from 'react-router-dom'
+import Feed from './Feed';
 
-function Home() {
+function Home(props) {
+  const { match } = props
+
+  console.log(match)
+
   return (
-    <>
-      <Navbar bg="light" expand="lg" className="fixed-top">
+    <div className="app-container">
+      <Navbar bg="light" expand="lg" className="fixed-top navbar-libra">
         <Navbar.Brand href="#home">
           <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Libra_logo.svg" className="logo" alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-
           <Form inline>
             <InputGroup>
               <FormControl
@@ -24,9 +29,7 @@ function Home() {
               </InputGroup.Prepend>
             </InputGroup>
           </Form>
-
           <Nav className="ml-auto mr-5">
-
             <Nav.Link className="active">Home</Nav.Link>
             <Nav.Link>About</Nav.Link>
             <Nav.Link>Community</Nav.Link>
@@ -40,16 +43,12 @@ function Home() {
             </NavDropdown> */}
 
           </Nav>
-
         </Navbar.Collapse>
       </Navbar>
-
-
-
-
-    </>
+      <Route path={match.path} component={Feed} />
+    </div>
   );
 }
 
-export default Home;
+export default withRouter(Home);
 

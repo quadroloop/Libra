@@ -1,14 +1,13 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom' 
 import './css/App.scss';
 import Home from './components/Home';
-import Feed from './components/Feed';
 
 function App() {
   return (
-    <div className="App">
-      <Home />
-      <Feed />
-    </div>
+    <Router>
+      <Route exact path="/" component={Home} />
+    </Router>
   );
 }
 
