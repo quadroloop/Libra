@@ -49,11 +49,8 @@
 </body>
 
 <script>
-  var defLat = 14.675645;
-  var defLong = 121.110733;
-
   function renderGMap() {
-    myCenter = new google.maps.LatLng(defLat, defLong);
+    myCenter = new google.maps.LatLng(localStorage.lat, localStorage.long);
     var mapOptions = {
       center: myCenter,
       zoom: 9, scrollwheel: false, draggable: true,
