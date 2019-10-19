@@ -1,7 +1,18 @@
-import React from 'react';
-import NasaLogo from '../assets/nasa-logo.png'
+import React, { useState, useEffect } from 'react';
+import client from '../services/client'
+
+import FeedItem from './FeedItem'
 
 const Feed = () => {
+  const [feed, setFeed] = useState([])
+
+  useEffect(() => {
+    client.get('/feeds')
+      .then(response => {
+        console.log(response)
+      })
+  })
+
   return (
     <div id="feed">
       <div className="side-bar">
@@ -54,16 +65,7 @@ const Feed = () => {
         <div className="feed-container">
           {
             Array.from(Array(100)).map(() => (
-              <div className="feed-item">
-                <div className="feed-details">
-                  <h1 className="city-name">Sample City Name</h1>
-                  <h3 className="danger-index">Danger Index <span className="index-number">3.2</span></h3>
-                  <div className="sources-images">
-                    <img className="sources-logo" src={NasaLogo} alt=""/>
-                  </div>
-                </div>
-                <img className="feed-image" src="https://picsum.photos/300/300" alt=""/>
-              </div>
+              <FeedItem />
             ))
           }
         </div>
