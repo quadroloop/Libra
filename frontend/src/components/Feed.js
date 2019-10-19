@@ -20,8 +20,8 @@ class Feed extends React.Component {
 
   render() {
     const { feed } = this.state
-    window.onload = ()=>{
-    loadLiveFeed();
+        window.onload = ()=>{
+        loadLiveFeed();
     }
 
   return (
@@ -65,17 +65,45 @@ class Feed extends React.Component {
             </div>
         </div>
       </div>
-      
         <div className="feed-content">
+
           <div className="feed-header">
           </div>
           <div className="feed-container">
+
+
             {
-              feed.map((feedItem) => (
+              feed.length ? feed.map((feedItem) => (
                 <FeedItem
                   feedItem={feedItem}
                 />
-              ))
+              )) : (
+                <React.Fragment>
+                  <div className="item-post">
+                    <div className="item"></div>
+                  </div>
+
+                  <div className="item-post">
+                    <div className="item"></div>
+                  </div>
+
+                  <div className="item-post">
+                    <div className="item"></div>
+                  </div>
+
+                  <div className="item-post">
+                    <div className="item"></div>
+                  </div>
+
+                  <div className="item-post">
+                    <div className="item"></div>
+                  </div>
+
+                  <div className="item-post">
+                    <div className="item"></div>
+                  </div>
+                </React.Fragment>
+              )
             }
           </div>
         </div>

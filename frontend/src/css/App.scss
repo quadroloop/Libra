@@ -16,6 +16,10 @@ a{
   color: #fff;
 }
 
+nav {
+  box-shadow: 3px 9px 11px -5px rgba(0, 0, 0, 0.089);
+}
+
 #search-bar{
   width: 400px;
   margin-left: 50px;
@@ -309,6 +313,17 @@ a{
   height: 150px;
   opacity: 0.3 !important;
 }
+
+.item-post{
+  min-width: 480px !important;
+  margin: 0 16px;
+  margin-bottom: 16px;
+  height: 150px;
+  opacity: 1.2 !important;
+  display: flex;
+  flex-direction: row;
+}
+
 .post .avatar {
   float: left;
   width: 90%;
@@ -317,6 +332,16 @@ a{
   border-radius: 5px;
   margin: 8px;
   background-image: linear-gradient(90deg, #F4F4F4 0px, rgba(229, 229, 229, 0.1) 40px, rgba(255, 255, 255, 0.287) 80px);
+  background-size: 1200px;
+  animation: shine-avatar 2s infinite ease-out;
+}
+
+ .item-post .item {
+   width: 100%;
+  background-color: rgba(229, 229, 229, 0.459);
+  border-radius: 5px;
+  margin: 10px;
+  background-image: linear-gradient(90deg, rgb(240, 240, 240) 0px, rgba(229, 229, 229, 0.1) 40px, rgba(219, 219, 219, 0.548) 80px);
   background-size: 1200px;
   animation: shine-avatar 2s infinite ease-out;
 }
