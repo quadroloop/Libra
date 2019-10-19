@@ -12,7 +12,7 @@ function Location(props) {
 
   useEffect(() => {
     setInterval(() => {
-      setDangerIndex(9.9)
+      setDangerIndex(6.9)
     }, 250)
   }, [])
 
@@ -62,9 +62,16 @@ function Location(props) {
                 styles={buildStyles({
                   strokeLinecap: 'butt',
                   pathTransitionDuration: 0.5,
-                  pathColor: getPathColor(dangerIndex * 10)
+                  pathColor: getPathColor(dangerIndex * 10),
+                  textColor: getPathColor(dangerIndex * 10)
                 })}
               >
+                <div
+                  className="circular-inner"
+                  style={{
+                    boxShadow: `-4px 4px 10px -4px ${getPathColor(dangerIndex * 10)}`
+                  }}
+                />
                 <RadialSeparators
                   count={8}
                   style={{

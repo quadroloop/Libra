@@ -281,6 +281,16 @@ a{
     width: 65%;
     margin: auto;
   }
+
+  * > .circular-inner {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+  }
+
+  * > .CircularProgressbar-text {
+    font-weight: 700;
+  }
 }
 
 .danger-index-title {
