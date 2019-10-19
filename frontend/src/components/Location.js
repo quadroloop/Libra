@@ -6,6 +6,18 @@ import { easeCubicInOut } from 'd3-ease';
 import RadialSeparators from '../services/RadialSeparators'
 import AnimatedProgressProvider from '../services/AnimatedProgressProvider'
 import LocationImage from '../assets/location.jpg'
+import { el } from './vanilla';
+
+const renderMap = (lat, long) => {
+  localStorage.lat = lat;
+  localStorage.long = long;
+
+  el('render-map').click();
+}
+
+window.onload = () => {
+  renderMap();
+}
 
 function Location(props) {
   const { match } = props
@@ -50,7 +62,7 @@ function Location(props) {
         <div className="content-container">
           <div className="location-header">
             <div className="map">
-
+              <div id="googleMap" style={{ "height": "400px" }}></div>
             </div>
             <div className="danger-index-container">
               <AnimatedProgressProvider

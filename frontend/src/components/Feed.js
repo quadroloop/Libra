@@ -3,6 +3,7 @@ import client from '../services/client'
 import {loadLiveFeed} from '../components/LiveFeed';
 import FeedItem from './FeedItem'
 
+
 class Feed extends React.Component {
   state = {
     feed: []
