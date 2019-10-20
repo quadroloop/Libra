@@ -122,7 +122,7 @@ function Location(props) {
     'flooding': [
       {
         "title": "Fixing sewage systems",
-        "body": "In urban areas, disfunctional sewage systems, is the most likely cause of excessive flooding."
+        "body": "In urban areas, disfunctional sewage systems, are the most likely cause of excessive flooding."
       },
       {
         "title": "Prepare Safety Equipment",
