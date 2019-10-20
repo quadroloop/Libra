@@ -333,7 +333,7 @@ function Location(props) {
                     {
                       selectedHazardItem.item.source.includes('nasa') && (
                         <span>
-                          <img className="sources-logo mr-2" src={NasaLogo} alt="" />
+                          Data Source: <img className="sources-logo mr-2" src={NasaLogo} alt="" />
                           {selectedHazardItem.item.source.toUpperCase()}
                         </span>
                       )
@@ -341,7 +341,7 @@ function Location(props) {
                     {
                       selectedHazardItem.item.source.includes('noah') && (
                         <span>
-                          <img className="sources-logo mr-2" src={NoahLogo} alt="" />
+                          Data Source: <img className="sources-logo mr-2" src={NoahLogo} alt="" />
                           {selectedHazardItem.item.source.toUpperCase()}
                         </span>
                       )
@@ -371,7 +371,10 @@ function Location(props) {
                       </Table>
                     )
                   }
-                  
+
+                  <h3 className="hazard-text">
+                    Source: <a className="text-primary" href={selectedHazardItem.item.data_result.source_lin}>{selectedHazardItem.item.data_result.source_lin}</a>
+                  </h3>
                 </div>
                
               </div>
