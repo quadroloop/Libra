@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from 'react'
 import { withRouter } from 'react-router-dom'
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import { easeCubicInOut } from 'd3-ease';
+import { Table } from 'react-bootstrap'
 import _ from 'lodash'
+import axios from 'axios'
 
 import RadialSeparators from '../services/RadialSeparators'
 import AnimatedProgressProvider from '../services/AnimatedProgressProvider'
@@ -33,7 +35,7 @@ function Location(props) {
   const [locationData, setLocationData] = useState({})
   const [dangerIndex, setDangerIndex] = useState(0)
   const [selectedHazardItem, setSelectedHazardItem] = useState(null)
-
+  const [address, setAddress] = useState('')
 
   const getRiskLevel = dangerIndex => {
     const riskLevels = {
@@ -196,14 +198,20 @@ function Location(props) {
     }
   ]
 
-  const relatedHazardsItemClick = item => {
-    const { lat, lng } = item.data_result.center
+  const relatedHazardsItemClick = async item => {
+    const { lat, lng } = item.data_result.center || {}
+    const { latitude, longitude } = item.data_result || {}
 
-    setSelectedHazardItem({
-      item,
-      hazardType: hazardData.find(hazard => hazard.name === item.hazard)
-    })
-    renderMap(lat, lng)
+    const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat || latitude},${lng || longitude}&key=AIzaSyD5kFZMwUIUDZ25nTtLx0_0G3x1d2GMiCY`)
+
+    if (response) {
+      setSelectedHazardItem({
+        item,
+        hazardType: hazardData.find(hazard => hazard.name === item.hazard),
+        address: response.data.results[0]
+      })
+    }
+    renderMap(lat || latitude, lng || longitude)
     locationRef.current.scrollTop = 0
   }
 
@@ -308,12 +316,12 @@ function Location(props) {
                   style={{ background: `url('${selectedHazardItem.hazardType.image}')` }}
                 />
                 <div className="hazard-content">
-                  <h3 className="hazard-text">
-                    {selectedHazardItem.item.country_name}
-                  </h3>
                   <h1 className="hazard-title">
                     {selectedHazardItem.item.location}
                   </h1>
+                  <h3 className="hazard-text mb-2">
+                    {selectedHazardItem.address.formatted_address}
+                  </h3>
                   <h3 className="hazard-text hazard-name">
                     {_.startCase(selectedHazardItem.item.hazard)}
                   </h3>
@@ -321,7 +329,7 @@ function Location(props) {
                     { selectedHazardItem.hazardType.description }
                   </p>
 
-                  <div className="sources-images" style={{ margin: 0 }}>
+                  <div className="sources-images m-0 mb-3">
                     {
                       selectedHazardItem.item.source.includes('nasa') && (
                         <span>
@@ -339,8 +347,33 @@ function Location(props) {
                       )
                     }
                   </div>
+                  {
+                    selectedHazardItem.item.source === 'nasa' && (
+                      <Table striped bordered>
+                        <tbody>
+                          <tr>
+                            <td>Trigger</td>
+                            <td>{ _.startCase(selectedHazardItem.item.data_result.trigger)}</td>
+                          </tr>
+                          <tr>
+                            <td>Storm Name</td>
+                            <td>{ selectedHazardItem.item.data_result.storm_name }</td>
+                          </tr>
+                          <tr>
+                            <td>Fatalities</td>
+                            <td>{ selectedHazardItem.item.data_result.fatalities }</td>
+                          </tr>
+                          <tr>
+                            <td>Injuries</td>
+                            <td>{ selectedHazardItem.item.data_result.injuries }</td>
+                          </tr>
+                        </tbody>
+                      </Table>
+                    )
+                  }
+                  
                 </div>
-
+               
               </div>
             )
           }

@@ -408,7 +408,7 @@ nav {
   position: relative;
   margin-top: 1rem;
   background: #ffffff;
-  min-height: 350px;
+  min-height: 200px;
   border-radius: 5px;
 
   overflow: hidden;
@@ -441,6 +441,7 @@ nav {
 .hazard-title {
   font-size: 2rem;
   font-weight: 700;
+  margin: 0;
 }
 
 .hazard-text {
