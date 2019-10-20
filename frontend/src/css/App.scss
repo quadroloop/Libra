@@ -397,15 +397,23 @@ nav {
 }
 
 .hazard-image {
-  width: 350px;
-  height: 350px;
+  width: 100px;
+  height: 100px;
+  margin: 32px;
+  margin-right: 0;
 
-  background-size: cover !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
 }
 
 .hazard-content { 
   padding: 32px;
   flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .hazard-title {
@@ -415,11 +423,17 @@ nav {
 
 .hazard-text {
   font-size: 1.125rem;
+  margin: 0;
 }
 
 .hazard-name {
   font-size: 0.875rem;
   background: rgb(255, 167, 26);
+  padding: 2.5px 5px;
+  color: #ffffff;
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 2.5px;
 }
 
 // skeleton loader

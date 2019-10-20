@@ -7,9 +7,9 @@ import _ from 'lodash'
 import RadialSeparators from '../services/RadialSeparators'
 import AnimatedProgressProvider from '../services/AnimatedProgressProvider'
 import LocationImage from '../assets/location.jpg'
-import LandslideImage from '../assets/landslide.jpg'
-import StormSurgeImage from '../assets/storm-surge.png'
-import FloodingImage from '../assets/flooding.jpg'
+import LandslideImage from '../assets/landslide.svg'
+import StormSurgeImage from '../assets/storm-surge.svg'
+import FloodingImage from '../assets/flood.svg'
 
 import { el } from './vanilla';
 import RelatedHazards from './RelatedHazards';
