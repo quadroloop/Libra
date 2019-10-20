@@ -29,7 +29,7 @@ function RelatedHazards(props) {
                   }}
                 />
                 <h3 className="hazard-item-text">
-                  { item.location }
+                  {item.location}
                 </h3>
               </div>
               <h3 className={`hazard-item-text text-hazard ${HazardColor[item.hazard]}`}>
@@ -39,21 +39,27 @@ function RelatedHazards(props) {
               <div className="sources-images" style={{ margin: 0 }}>
                 {
                   item.source.includes('nasa') && (
-                    <img className="sources-logo" src={NasaLogo} alt="" />
+                    <span>
+                      <img className="sources-logo mr-2" src={NasaLogo} alt="" />
+                      {item.source.toUpperCase()}
+                    </span>
                   )
                 }
                 {
                   item.source.includes('noah') && (
-                    <img className="sources-logo" src={NoahLogo} alt="" />
+                    <span>
+                      <img className="sources-logo mr-2" src={NoahLogo} alt="" />
+                      {item.source.toUpperCase()}
+                    </span>
                   )
                 }
               </div>
-              
+
               <Button variant="outline-info" className="hazard-item-button">
                 View Details
               </Button>
             </div>
-            
+
           </div>
         ))
       }

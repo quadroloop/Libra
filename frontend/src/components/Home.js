@@ -51,7 +51,7 @@ function Home(props) {
 
        for(var i=0; i< relatedHazards.length; i++){
           if(relatedHazards[i].innerText.replace(/(\r\n|\n|\r)/gm,"").replace(/\s+/g, '').toLowerCase().includes(query)){
-            relatedHazards[i].style = "display:flex;flex-direction: row";
+            relatedHazards[i].style = "display:block";
             relatedHazards[i].classList.add('match');
           }else{
           relatedHazards[i].style.display = "none";
@@ -66,7 +66,9 @@ function Home(props) {
         if(sclass('nmatch').length === 0 || isMounted('r-hazard')){
            el('no-results').innerHTML = `No results found for: '${el('search-bar').value}'`;
         }else{
-           el('no-results').innerHTML = `<i class="fa fa-arrow-left mr-2"></i> <span class="text-primary">${sclass('nmatch').length}</span> results found in latest feed.`;
+           el('no-results').innerHTML = `<i class="fa fa-arrow-left mr-2"></i>
+           <span class="text-primary">${sclass('nmatch').length}</span>
+           results found in latest feed.`;
         }
         el('no-results').style.display = "block";
       }else{
