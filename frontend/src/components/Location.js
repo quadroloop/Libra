@@ -18,9 +18,7 @@ const renderMap = (lat, long) => {
   el('render-map').click();
 }
 
-// window.onload = () => {
-//   renderMap();
-// }
+localStorage.page = "location";
 
 function Location(props) {
   const { match } = props
@@ -69,7 +67,7 @@ function Location(props) {
       <div className="location-sidebar">
         <img src={LocationImage} alt="" className="location-image" />
         <h3 className="location-name">{locationData.city_name}</h3>
-        <p className="country-name">PHILIPPINES</p>
+        <p className="country-name">{locationData.country_name}</p>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, repudiandae!
         </p>

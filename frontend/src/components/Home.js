@@ -3,9 +3,18 @@ import { Navbar, Nav, InputGroup, Form, FormControl } from 'react-bootstrap';
 import { Route, withRouter } from 'react-router-dom'
 import Feed from './Feed';
 import Location from './Location'
+import {sclass, el} from './vanilla';
+import { Link } from 'react-router-dom'
+
 
 function Home(props) {
   const { match } = props
+
+  const nav = (link) =>{
+      sclass('active')[0].classList.remove('active')
+      sclass(link)[0].classList.add('active')
+      el(link).click();
+  }
 
   return (
     <div className="app-container">
@@ -29,8 +38,20 @@ function Home(props) {
             </InputGroup>
           </Form>
           <Nav className="ml-auto mr-5">
-            <Nav.Link className="active">Home</Nav.Link>
-            <Nav.Link>About</Nav.Link>
+
+                <Nav.Link className="active home" onClick={()=>{
+                  nav('home')
+                }}>
+                   Home
+                </Nav.Link>
+
+              <Nav.Link onClick={()=>{nav('about')}} className="about">
+                 About
+              </Nav.Link>
+
+              <Link id="home" to="/" className="d-none" />
+              <Link id="about" to="/about" className="d-none" />
+
 
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>

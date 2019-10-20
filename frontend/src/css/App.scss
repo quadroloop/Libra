@@ -97,7 +97,7 @@ nav {
 .feed-header{
   height: 250px;
   width: 100%;
-  background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.5)), url('https://philippineslifestyle.com/wp-content/uploads/disasters-philippines-960x747.jpg') center fixed no-repeat;
+  background: linear-gradient(rgba(23, 9, 87, 0.8),rgba(79, 132, 175, 0.746)), url('https://philippineslifestyle.com/wp-content/uploads/disasters-philippines-960x747.jpg') center fixed no-repeat;
   background-size: cover;
 
   h1{
@@ -439,5 +439,13 @@ nav {
   display: inline-block;
   font-size: 12px;
   padding: 2px 10px;
+  text-transform: uppercase;
+}
+
+.country-feed-name{
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: rgb(0, 140, 255);
 }
 

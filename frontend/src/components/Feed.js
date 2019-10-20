@@ -10,7 +10,7 @@ class Feed extends React.Component {
   }
 
   componentDidMount() {
-    client.get('/feeds/philippines')
+    client.get('/feeds/')
       .then(response => {
         this.setState({
           feed: response.data
