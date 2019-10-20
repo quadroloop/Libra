@@ -6,7 +6,7 @@ import NoahLogo from '../assets/noah-logo.png'
 import LocationImage from '../assets/location.jpg'
 
 function RelatedHazards(props) {
-  const { data = [] } = props
+  const { data = [], onItemClick } = props
 
   let HazardColor = {
     "landslide": "text-danger",
@@ -55,7 +55,13 @@ function RelatedHazards(props) {
                 }
               </div>
 
-              <Button variant="outline-info" className="hazard-item-button">
+              <Button
+                variant="outline-info"
+                className="hazard-item-button"
+                onClick={() => {
+                  onItemClick(item)
+                }}
+              >
                 View Details
               </Button>
             </div>
