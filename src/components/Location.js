@@ -23,6 +23,8 @@ import RelatedHazards from './RelatedHazards';
 import client from '../services/client'
 
 const renderMap = (lat, long) => {
+
+  console.log(lat, long)
   localStorage.lat = lat;
   localStorage.long = long;
 
@@ -239,9 +241,9 @@ function Location(props) {
     })
       .then(response => {
         setLocationData(response.data)
-        renderSnippet(response.data.history)
         setDangerIndex(response.data.danger_index)
         renderMap(response.data.lat, response.data.long)
+        renderSnippet(response.data.history)
       })
       .catch(error => { })
   }, [])
