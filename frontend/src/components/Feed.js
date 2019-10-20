@@ -71,11 +71,9 @@ class Feed extends React.Component {
 
           <div className="feed-header p-5">
             <h1 className="text-white"> <span>Project</span> | Libra </h1>
-            <p className="text-white">A global hazard assesment tool for <strong>everyone.</strong></p>
+            <p className="text-white">A global hazard assessment tool for <strong>everyone.</strong></p>
           </div>
           <div className="feed-container">
-
-
             {
               feed.length ? feed.map((feedItem) => (
                 <FeedItem

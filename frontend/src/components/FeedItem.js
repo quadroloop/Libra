@@ -5,26 +5,27 @@ import NasaLogo from '../assets/nasa-logo.png'
 import NoahLogo from '../assets/noah-logo.png'
 import LocationImage from '../assets/location.jpg'
 
-const dangerIndexColor = (index) => {
-  let dIndex = parseFloat(index);
-  let color = "#316EFF"
+const dangerIndexColor = dangerIndex => {
+  const colors = {
+    "0_2": "#316EFF",
+    "3_4": "#347C18",
+    "5_6": "rgb(255, 167, 26)",
+    "7_8": "#FFA500",
+    "9_10": "#FF0000"
+  }
 
-  if (dIndex > 2) {
-    color = "#316EFF";
-  }
-  if (dIndex > 3) {
-    color = "#347C18";
-  }
-  if (dIndex > 6) {
-    color = "#FFF31A";
-  }
-  if (dIndex > 8) {
-    color = "#FFA500";
-  }
-  if (dIndex > 9) {
-    color = "#FF0000";
-  }
-  return color;
+  const keys = Object.keys(colors)
+  let color
+
+  keys.map(key => {
+    const minMax = key.split('_')
+
+    if (parseInt(minMax[0]) <= dangerIndex && parseInt(minMax[1]) >= dangerIndex) {
+      color = colors[key]
+    }
+  })
+
+  return color
 }
 
 

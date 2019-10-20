@@ -95,7 +95,7 @@ nav {
 }
 
 .feed-header{
-  height: 250px;
+  height: 190px;
   width: 100%;
   background: linear-gradient(rgba(23, 9, 87, 0.8),rgba(79, 132, 175, 0.746)), url('https://philippineslifestyle.com/wp-content/uploads/disasters-philippines-960x747.jpg') center fixed no-repeat;
   background-size: cover;
@@ -313,7 +313,8 @@ nav {
   font-size: 0.875rem;
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
+  margin-bottom: -5rem;
   font-weight: 800;
 }
 
@@ -370,6 +371,12 @@ nav {
 
   &-button {
     border-radius: 50px;
+  }
+
+  &hover{
+    transition: 0.3s;
+    background-color: #f7f7f7 !important;
+    cursor: pointer;
   }
 }
 
@@ -453,3 +460,14 @@ nav {
   display: none;
 }
 
+.risk-status{
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 3rem;
+  margin-top: -5rem;
+  color:  rgb(0, 140, 255);
+}
+
+.text-hazard{
+  text-transform: capitalize;
+}

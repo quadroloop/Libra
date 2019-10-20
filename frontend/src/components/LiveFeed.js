@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { el, isMounted } from '../components/vanilla';
 
-let prod = true;
+let prod = false;
 
 
 export const loadLiveFeed = () => {

@@ -8,6 +8,12 @@ import LocationImage from '../assets/location.jpg'
 function RelatedHazards(props) {
   const { data = [] } = props
 
+  let HazardColor = {
+    "landslide": "text-danger",
+    "storm_surge": "text-info",
+    "flooding": "text-primary"
+  }
+
   return (
     <div className="related-hazards">
       {
@@ -22,14 +28,14 @@ function RelatedHazards(props) {
                 }}
               />
               <h3 className="hazard-item-text">
-                { item.location }
+                {item.location}
               </h3>
             </div>
-            <h3 className="hazard-item-text">
-              Landslide
+            <h3 className={`hazard-item-text text-hazard ${HazardColor[item.hazard]}`}>
+              <i className="fa fa-warning"></i> {item.hazard.replace("_", " ")}
             </h3>
             <h3 className="hazard-item-text">
-              Danger Index <span className="hazard-item-text-badge">3.2</span>
+              {item.source.toUpperCase()}
             </h3>
 
             <div className="sources-images" style={{ margin: 0 }}>
