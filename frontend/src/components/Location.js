@@ -102,6 +102,77 @@ function Location(props) {
     return color
   }
 
+  let tips = {
+    'landslide': [
+      {
+        "title": "Urban Planning",
+        "body": `When it comes to building infrastractures around landslide prone areas, Mountain foothills should be avoided, and roads on mountain slopes,
+          should be built with enough space to handle traffic incase of rock fall, and safety railings to avoid accidents`,
+
+      },
+      {
+
+        "title": "Reforrestation",
+        "body": `Rural areas with history of frequent landslides and a decrease of vegetation
+          due to idustrialization should consider, tree planting to support land structure and prevent
+          risks of landslides during rainy seasons`,
+
+      }
+    ],
+    'flooding': [
+      {
+        "title": "Fixing sewage systems",
+        "body": "In urban areas, disfunctional sewage systems, are the most likely cause of excessive flooding."
+      },
+      {
+        "title": "Prepare Safety Equipment",
+        "body": "Most servere cases of flooding causes, water levels to rise way above the average human height, which causes more casualities. In cases like this emergency lifeboats, and floatation devices could be of great use."
+      }
+    ],
+    "storm_surge": [
+      {
+        "title": "Stay away from coastal areas",
+        "body": "In the case of servere waves, the best way to avoid danger and damage is to evacuate coastal areas"
+      }
+    ]
+  }
+
+  const renderSnippet = (data) => {
+    let hazardSet = {}
+    data.forEach(hazard => {
+      if (hazardSet[hazard.hazard]) {
+        hazardSet[hazard.hazard] += 1;
+      } else {
+        hazardSet[hazard.hazard] = 1;
+      }
+    })
+
+    el('disaster-list').innerHTML = "";
+    el('consideration-list').innerHTML = "";
+
+    Object.keys(hazardSet).forEach(item => {
+      el('disaster-list').innerHTML += `<p class="text-hazard"><i class="fa fa-warning mr-2"></i> ${item.replace("_", " ")}: ${hazardSet[item]}<p>`
+
+
+      tips[item].forEach(tip => {
+        el('consideration-list').innerHTML += `
+
+         <div class="c-card animated fadeIn">
+         <span><strong>${tip.title}</strong></span>
+         <br />
+         <small>${tip.body}</small><br />
+         </div>
+        `
+      })
+
+    })
+
+
+
+
+  }
+
+
   const hazardImages = {
     landslide: LandslideImage,
     storm_surge: StormSurgeImage,
@@ -124,6 +195,7 @@ function Location(props) {
     })
       .then(response => {
         setLocationData(response.data)
+        renderSnippet(response.data.history)
         setDangerIndex(response.data.danger_index)
         renderMap(response.data.lat, response.data.long)
       })
@@ -137,8 +209,23 @@ function Location(props) {
         <h3 className="location-name">{locationData.city_name}</h3>
         <p className="country-name">{locationData.country_name}</p>
         <p>
-          Summary of disaster events within the this area:
+          Summary of disaster events within this area:
         </p>
+
+        <hr />
+        <strong className="text-warning"><i className="fa fa-line-chart mr-1"></i>Related disaster types:</strong>
+        <hr />
+        <strong id="disaster-list">
+        </strong>
+
+        <hr />
+        <strong className="text-green"><i className="fa fa-check mr-1"></i>Potential Considerations:</strong>
+        <hr />
+        <div id="consideration-list">
+        </div>
+
+
+
       </div>
       <div className="location-content" ref={locationRef}>
         <div className="content-container">
@@ -202,16 +289,16 @@ function Location(props) {
                 />
                 <div className="hazard-content">
                   <h3 className="hazard-text">
-                    { selectedHazardItem.country_name }
+                    {selectedHazardItem.country_name}
                   </h3>
                   <h1 className="hazard-title">
-                    { selectedHazardItem.location }
+                    {selectedHazardItem.location}
                   </h1>
                   <h3 className="hazard-text hazard-name">
-                    { _.startCase(selectedHazardItem.hazard) }
+                    {_.startCase(selectedHazardItem.hazard)}
                   </h3>
                 </div>
-                
+
               </div>
             )
           }

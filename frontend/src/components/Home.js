@@ -5,6 +5,7 @@ import Feed from './Feed';
 import Location from './Location'
 import {sclass, el, isMounted} from './vanilla';
 import { Link } from 'react-router-dom'
+import libra_logo from '../assets/libra-logo.png';
 
 
 function Home(props) {
@@ -35,13 +36,13 @@ function Home(props) {
          }
         }
 
-         for(var i=0; i< liveFeeds.length; i++){
-          if(liveFeeds[i].innerText.replace(/(\r\n|\n|\r)/gm,"").replace(/\s+/g, '').toLowerCase().includes(query)){
-            liveFeeds[i].style = "display:block";
-            liveFeeds[i].classList.add('nmatch');
+         for(var x=0; x< liveFeeds.length; x++){
+          if(liveFeeds[x].innerText.replace(/(\r\n|\n|\r)/gm,"").replace(/\s+/g, '').toLowerCase().includes(query)){
+            liveFeeds[x].style = "display:block";
+            liveFeeds[x].classList.add('nmatch');
           }else{
-           liveFeeds[i].style.display = "none";
-           liveFeeds[i].classList.remove('nmatch');
+           liveFeeds[x].style.display = "none";
+           liveFeeds[x].classList.remove('nmatch');
           }
         }
 
@@ -49,13 +50,13 @@ function Home(props) {
     }else{
        let relatedHazards = sclass('hazard-item');
 
-       for(var i=0; i< relatedHazards.length; i++){
-          if(relatedHazards[i].innerText.replace(/(\r\n|\n|\r)/gm,"").replace(/\s+/g, '').toLowerCase().includes(query)){
-            relatedHazards[i].style = "display:block";
-            relatedHazards[i].classList.add('match');
+       for(var s=0; s< relatedHazards.length; s++){
+          if(relatedHazards[s].innerText.replace(/(\r\n|\n|\r)/gm,"").replace(/\s+/g, '').toLowerCase().includes(query)){
+            relatedHazards[s].style = "display:block";
+            relatedHazards[s].classList.add('match');
           }else{
-          relatedHazards[i].style.display = "none";
-          relatedHazards[i].classList.remove('match');
+          relatedHazards[s].style.display = "none";
+          relatedHazards[s].classList.remove('match');
           }
        }
     }
@@ -81,8 +82,8 @@ function Home(props) {
   return (
     <div className="app-container">
       <Navbar bg="light" expand="lg" className="fixed-top navbar-libra">
-        <Navbar.Brand href="#home">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Libra_logo.svg" className="logo" alt="logo" />
+        <Navbar.Brand href="/">
+          <img src={libra_logo} className="logo" alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -111,7 +112,7 @@ function Home(props) {
               </Nav.Link>
 
               <Link id="home" to="/" className="d-none" />
-              <Link id="about" to="/about" className="d-none" />
+              <a id="about" href="https://github.com/quadroloop/Libra" className="d-none" />
 
 
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
