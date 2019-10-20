@@ -23,8 +23,6 @@ import RelatedHazards from './RelatedHazards';
 import client from '../services/client'
 
 const renderMap = (lat, long) => {
-
-  console.log(lat, long)
   localStorage.lat = lat;
   localStorage.long = long;
 
