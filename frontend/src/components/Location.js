@@ -352,7 +352,7 @@ function Location(props) {
                       selectedHazardItem.item.source.includes('github') && (
                         <span>
                           Data Source: <img className="sources-logo mr-2" src={GithubLogo} alt="" />
-                          Github
+                          Plotly
                         </span>
                       )
                     }

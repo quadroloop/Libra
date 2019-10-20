@@ -58,7 +58,7 @@ function RelatedHazards(props) {
                   item.source.includes('github') && (
                     <span>
                       <img className="sources-logo mr-2" src={GithubLogo} alt="" />
-                      Github
+                      Plotly
                     </span>
                   )
                 }
