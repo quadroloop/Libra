@@ -3,7 +3,7 @@ import { Navbar, Nav, InputGroup, Form, FormControl } from 'react-bootstrap';
 import { Route, withRouter } from 'react-router-dom'
 import Feed from './Feed';
 import Location from './Location'
-import {sclass, el} from './vanilla';
+import {sclass, el, isMounted} from './vanilla';
 import { Link } from 'react-router-dom'
 
 
@@ -15,6 +15,55 @@ function Home(props) {
       sclass(link)[0].classList.add('active')
       el(link).click();
   }
+
+  // all-in-one search function;
+
+  const search = () => {
+    // search feeds fage
+    let query = el('search-bar').value.split(" ").join("").toLowerCase();
+    if(sclass('feed-item').length > 0){
+      let feedItems = sclass('feed-item')
+      let liveFeeds = sclass('new-feed-card');
+
+      for(var i=0; i< feedItems.length; i++){
+         if(feedItems[i].innerText.replace(/(\r\n|\n|\r)/gm,"").replace(/\s+/g, '').toLowerCase().includes(query)){
+           feedItems[i].style = "display:flex;flex-direction: row";
+           feedItems[i].classList.add('match');
+         }else{
+          feedItems[i].style.display = "none";
+          feedItems[i].classList.remove('match');
+         }
+        }
+
+         for(var i=0; i< liveFeeds.length; i++){
+          if(liveFeeds[i].innerText.replace(/(\r\n|\n|\r)/gm,"").replace(/\s+/g, '').toLowerCase().includes(query)){
+            liveFeeds[i].style = "display:block";
+            liveFeeds[i].classList.add('nmatch');
+          }else{
+           liveFeeds[i].style.display = "none";
+           liveFeeds[i].classList.remove('nmatch');
+          }
+        }
+
+        // handle no results
+        if(isMounted('no-results')){
+         if(sclass('match').length === 0){
+           if(sclass('nmatch').length === 0){
+              el('no-results').innerHTML = `No results found for: '${el('search-bar').value}'`;
+           }else{
+              el('no-results').innerHTML = `<i class="fa fa-arrow-left mr-2"></i> <span class="text-primary">${sclass('nmatch').length}</span> results found in latest feed.`;
+           }
+           el('no-results').style.display = "block";
+         }else{
+          el('no-results').style.display = "none";
+         }
+        }
+
+    }else{
+      // search location page
+    }
+  }
+
 
   return (
     <div className="app-container">
@@ -31,6 +80,7 @@ function Home(props) {
                 aria-label="Username"
                 aria-describedby="search-btn"
                 id="search-bar"
+                onKeyUp={()=>{search()}}
               />
               <InputGroup.Prepend>
                 <InputGroup.Text id="search-btn"><i class="fa fa-search"></i></InputGroup.Text>

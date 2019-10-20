@@ -18,7 +18,6 @@ const renderMap = (lat, long) => {
   el('render-map').click();
 }
 
-localStorage.page = "location";
 
 function Location(props) {
   const { match } = props

@@ -34,7 +34,7 @@ function FeedItem(props) {
   return (
     <Link to={`/location/${feedItem.city_name}`} className="feed-link"
     >
-      <div className="feed-item">
+      <div className="feed-item animated fadeIn">
         <div className="feed-details">
           <h1 className="city-name">
             {feedItem.city_name}
@@ -47,12 +47,12 @@ function FeedItem(props) {
           </h3>
           <div className="sources-images">
             {
-              feedItem.data_source === 'nasa' && (
+              feedItem.data_source.includes('nasa') && (
                 <img className="sources-logo" src={NasaLogo} alt="" />
               )
             }
             {
-              feedItem.data_source === 'noah' && (
+              feedItem.data_source.includes('noah') && (
                 <img className="sources-logo" src={NoahLogo} alt="" />
               )
             }

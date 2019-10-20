@@ -4,12 +4,15 @@ import {loadLiveFeed} from '../components/LiveFeed';
 import FeedItem from './FeedItem'
 
 
+
 class Feed extends React.Component {
   state = {
     feed: []
   }
 
+
   componentDidMount() {
+    loadLiveFeed();
     client.get('/feeds/')
       .then(response => {
         this.setState({
@@ -21,9 +24,6 @@ class Feed extends React.Component {
 
   render() {
     const { feed } = this.state
-    window.onload = ()=>{
-        loadLiveFeed();
-    }
 
     return (
       <div id="feed">
@@ -71,7 +71,7 @@ class Feed extends React.Component {
 
           <div className="feed-header p-5">
             <h1 className="text-white"> <span>Project</span> | Libra </h1>
-            <p className="text-white">A global hazard assesment tool that everyone can <strong>understand.</strong></p>
+            <p className="text-white">A global hazard assesment tool for <strong>everyone.</strong></p>
           </div>
           <div className="feed-container">
 
@@ -109,6 +109,8 @@ class Feed extends React.Component {
                 </React.Fragment>
               )
             }
+
+            <h2 className="p-5" id="no-results" className="animated fadeInUp"></h2>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { el, isMounted } from '../components/vanilla';
 
-let prod = false;
+let prod = true;
 
 
 export const loadLiveFeed = () => {
@@ -17,10 +17,10 @@ export const loadLiveFeed = () => {
         nfeed.forEach(item => {
           el('live-feed').innerHTML += `
           <a href="${item.fields.url}" target="_bank" rel="noreferrer noopener">
-            <div class="new-feed-card">
+            <div class="new-feed-card animated fadeIn">
               <span><strong>${item.fields.name}</strong></span>
               <br />
-              <small>2 countries affected</small><br />
+              <small>${item.fields.country.length} area/s affected</small><br />
               <div class="btn-circle">
                 <i class="fa fa-chevron-right"></i>
               </div>
