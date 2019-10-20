@@ -84,7 +84,6 @@ function Home(props) {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Form inline>
             <InputGroup>
               <FormControl
                 placeholder="Search"
@@ -97,7 +96,6 @@ function Home(props) {
                 <InputGroup.Text id="search-btn"><i class="fa fa-search"></i></InputGroup.Text>
               </InputGroup.Prepend>
             </InputGroup>
-          </Form>
           <Nav className="ml-auto mr-5">
 
                 <Nav.Link className="active home" onClick={()=>{
