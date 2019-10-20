@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap'
 
 import NasaLogo from '../assets/nasa-logo.png'
 import NoahLogo from '../assets/noah-logo.png'
+import GithubLogo from '../assets/github.svg'
 import LocationImage from '../assets/location.jpg'
 
 function RelatedHazards(props) {
@@ -50,6 +51,14 @@ function RelatedHazards(props) {
                     <span>
                       <img className="sources-logo mr-2" src={NoahLogo} alt="" />
                       {item.source.toUpperCase()}
+                    </span>
+                  )
+                }
+                {
+                  item.source.includes('github') && (
+                    <span>
+                      <img className="sources-logo mr-2" src={GithubLogo} alt="" />
+                      Github
                     </span>
                   )
                 }
