@@ -1,11 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { withRouter } from 'react-router-dom'
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import { easeCubicInOut } from 'd3-ease';
+import _ from 'lodash'
 
 import RadialSeparators from '../services/RadialSeparators'
 import AnimatedProgressProvider from '../services/AnimatedProgressProvider'
 import LocationImage from '../assets/location.jpg'
+import LandslideImage from '../assets/landslide.jpg'
+import StormSurgeImage from '../assets/storm-surge.png'
+import FloodingImage from '../assets/flooding.jpg'
+
 import { el } from './vanilla';
 import RelatedHazards from './RelatedHazards';
 
@@ -21,8 +26,10 @@ const renderMap = (lat, long) => {
 
 function Location(props) {
   const { match } = props
+  const locationRef = useRef(null)
   const [locationData, setLocationData] = useState({})
   const [dangerIndex, setDangerIndex] = useState(0)
+  const [selectedHazardItem, setSelectedHazardItem] = useState(null)
 
 
   const getRiskLevel = dangerIndex => {
@@ -95,6 +102,20 @@ function Location(props) {
     return color
   }
 
+  const hazardImages = {
+    landslide: LandslideImage,
+    storm_surge: StormSurgeImage,
+    flooding: FloodingImage,
+  }
+
+  const relatedHazardsItemClick = item => {
+    const { lat, lng } = item.data_result.center
+
+    setSelectedHazardItem(item)
+    renderMap(lat, lng)
+    locationRef.current.scrollTop = 0
+  }
+
   useEffect(() => {
     client.get('/location', {
       params: {
@@ -119,7 +140,7 @@ function Location(props) {
           Summary of disaster events within the this area:
         </p>
       </div>
-      <div className="location-content">
+      <div className="location-content" ref={locationRef}>
         <div className="content-container">
           <div className="location-header">
             <div className="map">
@@ -172,13 +193,35 @@ function Location(props) {
 
             </div>
           </div>
-
+          {
+            selectedHazardItem && (
+              <div className="hazard-detail">
+                <div
+                  className="hazard-image"
+                  style={{ background: `url('${hazardImages[selectedHazardItem.hazard]}')` }}
+                />
+                <div className="hazard-content">
+                  <h3 className="hazard-text">
+                    { selectedHazardItem.country_name }
+                  </h3>
+                  <h1 className="hazard-title">
+                    { selectedHazardItem.location }
+                  </h1>
+                  <h3 className="hazard-text hazard-name">
+                    { _.startCase(selectedHazardItem.hazard) }
+                  </h3>
+                </div>
+                
+              </div>
+            )
+          }
           <h3 className="related-hazards-title" id="r-hazard">
             Related Hazards
           </h3>
 
           <RelatedHazards
             data={locationData.history}
+            onItemClick={relatedHazardsItemClick}
           />
 
           <h2 className="p-5" id="no-results" className="animated fadeInUp"></h2>
