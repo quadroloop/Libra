@@ -34,19 +34,24 @@ function RelatedHazards(props) {
             <h3 className={`hazard-item-text text-hazard ${HazardColor[item.hazard]}`}>
               <i className="fa fa-warning"></i> {item.hazard.replace("_", " ")}
             </h3>
-            <h3 className="hazard-item-text">
-              {item.source.toUpperCase()}
-            </h3>
+
 
             <div className="sources-images" style={{ margin: 0 }}>
               {
                 item.source.includes('nasa') && (
-                  <img className="sources-logo" src={NasaLogo} alt="" />
+                  <span>
+                    <img className="sources-logo mr-2" src={NasaLogo} alt="" />
+                    {item.source.toUpperCase()}
+                  </span>
+
                 )
               }
               {
                 item.source.includes('noah') && (
-                  <img className="sources-logo" src={NoahLogo} alt="" />
+                  <span>
+                    <img className="sources-logo mr-2" src={NoahLogo} alt="" />
+                    {item.source.toUpperCase()}
+                  </span>
                 )
               }
             </div>
