@@ -13,7 +13,7 @@ class Feed extends React.Component {
 
   componentDidMount() {
     loadLiveFeed();
-    client.get('/feeds/')
+    client.get('/feeds')
       .then(response => {
         this.setState({
           feed: response.data

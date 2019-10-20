@@ -15,6 +15,7 @@ import FloodingImage from '../assets/flood.svg'
 import EarthquakeImage from '../assets/earthquake.svg'
 import NasaLogo from '../assets/nasa-logo.png'
 import NoahLogo from '../assets/noah-logo.png'
+import GithubLogo from '../assets/github.svg'
 
 import { el } from './vanilla';
 import RelatedHazards from './RelatedHazards';
@@ -215,8 +216,9 @@ function Location(props) {
   const relatedHazardsItemClick = async item => {
     const { lat, lng } = item.data_result.center || {}
     const { latitude, longitude } = item.data_result || {}
+    const { lat: dataLat, long: dataLong } = item.data_result || {}
 
-    const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat || latitude},${lng || longitude}&key=AIzaSyD5kFZMwUIUDZ25nTtLx0_0G3x1d2GMiCY`)
+    const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat || latitude || dataLat},${lng || longitude || dataLong}&key=AIzaSyD5kFZMwUIUDZ25nTtLx0_0G3x1d2GMiCY`)
 
     if (response) {
       setSelectedHazardItem({
@@ -225,7 +227,7 @@ function Location(props) {
         address: response.data.results[0]
       })
     }
-    renderMap(lat || latitude, lng || longitude)
+    renderMap(lat || latitude || dataLat, lng || longitude || dataLong)
     locationRef.current.scrollTop = 0
   }
 
@@ -347,7 +349,7 @@ function Location(props) {
                     {
                       selectedHazardItem.item.source.includes('nasa') && (
                         <span>
-                          <img className="sources-logo mr-2" src={NasaLogo} alt="" />
+                          Data Source: <img className="sources-logo mr-2" src={NasaLogo} alt="" />
                           {selectedHazardItem.item.source.toUpperCase()}
                         </span>
                       )
@@ -355,34 +357,48 @@ function Location(props) {
                     {
                       selectedHazardItem.item.source.includes('noah') && (
                         <span>
-                          <img className="sources-logo mr-2" src={NoahLogo} alt="" />
+                          Data Source: <img className="sources-logo mr-2" src={NoahLogo} alt="" />
                           {selectedHazardItem.item.source.toUpperCase()}
+                        </span>
+                      )
+                    }
+                    {
+                      selectedHazardItem.item.source.includes('github') && (
+                        <span>
+                          Data Source: <img className="sources-logo mr-2" src={GithubLogo} alt="" />
+                          Plotly
                         </span>
                       )
                     }
                   </div>
                   {
                     selectedHazardItem.item.source === 'nasa' && (
-                      <Table striped bordered>
-                        <tbody>
-                          <tr>
-                            <td>Trigger</td>
-                            <td>{_.startCase(selectedHazardItem.item.data_result.trigger)}</td>
-                          </tr>
-                          <tr>
-                            <td>Storm Name</td>
-                            <td>{selectedHazardItem.item.data_result.storm_name}</td>
-                          </tr>
-                          <tr>
-                            <td>Fatalities</td>
-                            <td>{selectedHazardItem.item.data_result.fatalities}</td>
-                          </tr>
-                          <tr>
-                            <td>Injuries</td>
-                            <td>{selectedHazardItem.item.data_result.injuries}</td>
-                          </tr>
-                        </tbody>
-                      </Table>
+                      <React.Fragment>
+                        <Table striped bordered>
+                          <tbody>
+                            <tr>
+                              <td><b>Trigger</b></td>
+                              <td>{_.startCase(selectedHazardItem.item.data_result.trigger)}</td>
+                            </tr>
+                            <tr>
+                              <td><b>Storm Name</b></td>
+                              <td>{selectedHazardItem.item.data_result.storm_name}</td>
+                            </tr>
+                            <tr>
+                              <td><b>Fatalities</b></td>
+                              <td>{selectedHazardItem.item.data_result.fatalities}</td>
+                            </tr>
+                            <tr>
+                              <td><b>Injuries</b></td>
+                              <td>{selectedHazardItem.item.data_result.injuries}</td>
+                            </tr>
+                          </tbody>
+                        </Table>
+
+                        <h3 className="hazard-text">
+                          Source: <a className="text-primary" href={selectedHazardItem.item.data_result.source_lin}>{selectedHazardItem.item.data_result.source_lin}</a>
+                        </h3>
+                      </React.Fragment>
                     )
                   }
 
