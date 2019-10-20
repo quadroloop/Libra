@@ -173,13 +173,16 @@ function Location(props) {
             </div>
           </div>
 
-          <h3 className="related-hazards-title">
+          <h3 className="related-hazards-title" id="r-hazard">
             Related Hazards
           </h3>
 
           <RelatedHazards
             data={locationData.history}
           />
+
+          <h2 className="p-5" id="no-results" className="animated fadeInUp"></h2>
+
         </div>
       </div>
     </div>

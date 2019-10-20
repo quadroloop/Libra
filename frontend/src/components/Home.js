@@ -45,23 +45,34 @@ function Home(props) {
           }
         }
 
-        // handle no results
-        if(isMounted('no-results')){
-         if(sclass('match').length === 0){
-           if(sclass('nmatch').length === 0){
-              el('no-results').innerHTML = `No results found for: '${el('search-bar').value}'`;
-           }else{
-              el('no-results').innerHTML = `<i class="fa fa-arrow-left mr-2"></i> <span class="text-primary">${sclass('nmatch').length}</span> results found in latest feed.`;
-           }
-           el('no-results').style.display = "block";
-         }else{
-          el('no-results').style.display = "none";
-         }
-        }
 
     }else{
-      // search location page
+       let relatedHazards = sclass('hazard-item');
+
+       for(var i=0; i< relatedHazards.length; i++){
+          if(relatedHazards[i].innerText.replace(/(\r\n|\n|\r)/gm,"").replace(/\s+/g, '').toLowerCase().includes(query)){
+            relatedHazards[i].style = "display:flex;flex-direction: row";
+            relatedHazards[i].classList.add('match');
+          }else{
+          relatedHazards[i].style.display = "none";
+          relatedHazards[i].classList.remove('match');
+          }
+       }
     }
+
+    // handle no results
+    if(isMounted('no-results')){
+      if(sclass('match').length === 0){
+        if(sclass('nmatch').length === 0 || isMounted('r-hazard')){
+           el('no-results').innerHTML = `No results found for: '${el('search-bar').value}'`;
+        }else{
+           el('no-results').innerHTML = `<i class="fa fa-arrow-left mr-2"></i> <span class="text-primary">${sclass('nmatch').length}</span> results found in latest feed.`;
+        }
+        el('no-results').style.display = "block";
+      }else{
+       el('no-results').style.display = "none";
+      }
+     }
   }
 
 

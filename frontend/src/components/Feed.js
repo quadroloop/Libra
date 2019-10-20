@@ -70,8 +70,8 @@ class Feed extends React.Component {
         <div className="feed-content">
 
           <div className="feed-header p-5">
-            <h1 className="text-white"> <span>Project</span> | Libra </h1>
-            <p className="text-white">A global hazard assessment tool for <strong>everyone.</strong></p>
+            <h1 className="text-white animated fadeInUp delay-2"> <span>Project</span> | Libra </h1>
+            <p className="text-white animated fadeInUp delay-6">A global hazard assessment tool for <strong>everyone.</strong></p>
           </div>
           <div className="feed-container">
             {

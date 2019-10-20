@@ -18,7 +18,7 @@ function RelatedHazards(props) {
     <div className="related-hazards">
       {
         data.map((item, index) => (
-          <div key={index} className="hazard-item">
+          <div key={index} className="hazard-item animated fadeIn">
             <div className="d-flex align-items-center">
               <div
                 className="hazard-item-image"
