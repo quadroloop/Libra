@@ -139,6 +139,20 @@ function Location(props) {
       {
         "title": "Stay away from coastal areas",
         "body": "In the case of servere waves, the best way to avoid danger and damage is to evacuate coastal areas"
+      },
+      {
+        "title": "Reinforce Shelters",
+        "body": "Sandbags are a valuable tool to prevent water from entering your home. This approach requires specific instructions from your local emergency officials."
+      }
+    ],
+    "earthquakes": [
+      {
+        "title": "Adaptive Architecture",
+        "body": "Urban buildings or any structure should settle for disaster resistant designs to avoid mass damage in properties"
+      },
+      {
+        "title": "Disaster ready plans",
+        "body": "For areas prone to earthquakes one good comnsideration is to always have a clear path of evacuation incase of disaster."
       }
     ]
   }
@@ -328,7 +342,7 @@ function Location(props) {
                     {_.startCase(selectedHazardItem.item.hazard)}
                   </h3>
                   <p className="hazard-description">
-                    { selectedHazardItem.hazardType.description }
+                    {selectedHazardItem.hazardType.description}
                   </p>
 
                   <div className="sources-images m-0 mb-3">
@@ -364,19 +378,19 @@ function Location(props) {
                           <tbody>
                             <tr>
                               <td><b>Trigger</b></td>
-                              <td>{ _.startCase(selectedHazardItem.item.data_result.trigger)}</td>
+                              <td>{_.startCase(selectedHazardItem.item.data_result.trigger)}</td>
                             </tr>
                             <tr>
                               <td><b>Storm Name</b></td>
-                              <td>{ selectedHazardItem.item.data_result.storm_name }</td>
+                              <td>{selectedHazardItem.item.data_result.storm_name}</td>
                             </tr>
                             <tr>
                               <td><b>Fatalities</b></td>
-                              <td>{ selectedHazardItem.item.data_result.fatalities }</td>
+                              <td>{selectedHazardItem.item.data_result.fatalities}</td>
                             </tr>
                             <tr>
                               <td><b>Injuries</b></td>
-                              <td>{ selectedHazardItem.item.data_result.injuries }</td>
+                              <td>{selectedHazardItem.item.data_result.injuries}</td>
                             </tr>
                           </tbody>
                         </Table>
@@ -389,7 +403,7 @@ function Location(props) {
                   }
 
                 </div>
-               
+
               </div>
             )
           }
