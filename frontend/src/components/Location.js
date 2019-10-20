@@ -10,6 +10,9 @@ import LocationImage from '../assets/location.jpg'
 import LandslideImage from '../assets/landslide.svg'
 import StormSurgeImage from '../assets/storm-surge.svg'
 import FloodingImage from '../assets/flood.svg'
+import EarthquakeImage from '../assets/earthquake.svg'
+import NasaLogo from '../assets/nasa-logo.png'
+import NoahLogo from '../assets/noah-logo.png'
 
 import { el } from './vanilla';
 import RelatedHazards from './RelatedHazards';
@@ -173,16 +176,33 @@ function Location(props) {
   }
 
 
-  const hazardImages = {
-    landslide: LandslideImage,
-    storm_surge: StormSurgeImage,
-    flooding: FloodingImage,
-  }
+  const hazardData = [
+    {
+      name: 'landslide',
+      image: LandslideImage,
+      description: `The term landslide or less frequently, landslip, refers to several forms of mass wasting that include a wide range of ground movements, such as rockfalls, deep-seated slope failures, mudflows, and debris flows.`
+    }, {
+      name: 'storm_surge',
+      image: StormSurgeImage,
+      description: `A storm surge, storm flood, tidal surge or storm tide is a coastal flood or tsunami-like phenomenon of rising water commonly associated with low pressure weather systems. Its severity is affected by the shallowness and orientation of the water body relative to storm path, as well as the timing of tides.`
+    }, {
+      name: 'flooding',
+      image: FloodingImage,
+      description: `A flood is an overflow of water that submerges land that is usually dry. In the sense of "flowing water", the word may also be applied to the inflow of the tide. Floods are an area of study of the discipline hydrology and are of significant concern in agriculture, civil engineering and public health.`
+    }, {
+      name: 'earthquake',
+      image: EarthquakeImage,
+      description: `An earthquake (also known as a quake, tremor or temblor) is the shaking of the surface of the Earth, resulting from the sudden release of energy in the Earth's lithosphere that creates seismic waves. Earthquakes can range in size from those that are so weak that they cannot be felt to those violent enough to toss people around and destroy whole cities.`
+    }
+  ]
 
   const relatedHazardsItemClick = item => {
     const { lat, lng } = item.data_result.center
 
-    setSelectedHazardItem(item)
+    setSelectedHazardItem({
+      item,
+      hazardType: hazardData.find(hazard => hazard.name === item.hazard)
+    })
     renderMap(lat, lng)
     locationRef.current.scrollTop = 0
   }
@@ -285,18 +305,40 @@ function Location(props) {
               <div className="hazard-detail">
                 <div
                   className="hazard-image"
-                  style={{ background: `url('${hazardImages[selectedHazardItem.hazard]}')` }}
+                  style={{ background: `url('${selectedHazardItem.hazardType.image}')` }}
                 />
                 <div className="hazard-content">
                   <h3 className="hazard-text">
-                    {selectedHazardItem.country_name}
+                    {selectedHazardItem.item.country_name}
                   </h3>
                   <h1 className="hazard-title">
-                    {selectedHazardItem.location}
+                    {selectedHazardItem.item.location}
                   </h1>
                   <h3 className="hazard-text hazard-name">
-                    {_.startCase(selectedHazardItem.hazard)}
+                    {_.startCase(selectedHazardItem.item.hazard)}
                   </h3>
+                  <p className="hazard-description">
+                    { selectedHazardItem.hazardType.description }
+                  </p>
+
+                  <div className="sources-images" style={{ margin: 0 }}>
+                    {
+                      selectedHazardItem.item.source.includes('nasa') && (
+                        <span>
+                          <img className="sources-logo mr-2" src={NasaLogo} alt="" />
+                          {selectedHazardItem.item.source.toUpperCase()}
+                        </span>
+                      )
+                    }
+                    {
+                      selectedHazardItem.item.source.includes('noah') && (
+                        <span>
+                          <img className="sources-logo mr-2" src={NoahLogo} alt="" />
+                          {selectedHazardItem.item.source.toUpperCase()}
+                        </span>
+                      )
+                    }
+                  </div>
                 </div>
 
               </div>

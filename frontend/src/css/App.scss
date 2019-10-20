@@ -6,7 +6,7 @@ $easing: cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 .logo{
-  width: 110px;
+  width: 140px;
   margin-top: -4px !important;
   margin-left: 9px;
 }
@@ -456,6 +456,14 @@ nav {
   text-transform: uppercase;
   font-weight: 500;
   border-radius: 2.5px;
+  margin-bottom: 0.5rem;
+}
+
+.hazard-description {
+  padding: 0.5rem 1rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid rgb(255, 167, 26);
+  background: rgba(255, 167, 26, 0.125);
 }
 
 // skeleton loader

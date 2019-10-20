@@ -5,7 +5,7 @@ import Feed from './Feed';
 import Location from './Location'
 import {sclass, el, isMounted} from './vanilla';
 import { Link } from 'react-router-dom'
-import libra_logo from '../assets/libra-logo.png';
+import libra_logo from '../assets/libra-logo.svg';
 
 
 function Home(props) {
