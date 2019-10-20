@@ -13,13 +13,24 @@ class Feed extends React.Component {
 
   componentDidMount() {
     loadLiveFeed();
-    client.get('/feeds')
-      .then(response => {
-        this.setState({
-          feed: response.data
+    const cachedFeed = localStorage.getItem('feed')
+
+    if (!cachedFeed) {
+      client.get('/feeds')
+        .then(response => {
+          localStorage.setItem('feed', JSON.stringify(response.data))
+          this.setState({
+            feed: response.data
+          })
         })
-      })
-      .catch(error => {})
+        .catch(error => {})
+
+      return 
+    }
+
+    this.setState({
+      feed: JSON.parse(localStorage.getItem('feed'))
+    })
   }
 
   render() {
