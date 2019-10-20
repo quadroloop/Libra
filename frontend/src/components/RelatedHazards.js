@@ -53,7 +53,9 @@ function RelatedHazards(props) {
                 View Details
               </Button>
             </div>
-            
+            <div className="hazard-details">
+
+            </div>
           </div>
         ))
       }
